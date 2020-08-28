@@ -5,7 +5,7 @@ function Test(){
 
     return (
         <div>
-            <span>aaaaaaasssssssssssssssaaaaaaaaaaaaaafffaaassssssssssssaaaa</span>
+            <span>lenin</span>
 
         </div>
 
