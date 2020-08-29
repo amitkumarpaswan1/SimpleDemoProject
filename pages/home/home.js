@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-export default function FirstPost() {
+export default function HomePage() {
     var loginEmails;
     var loginPsws;
     var emailId;
@@ -12,6 +12,7 @@ export default function FirstPost() {
     var getEmailDash;
     var fullNames;
     var nameVal;
+    var pass1Var;
 
 
 
@@ -33,12 +34,12 @@ export default function FirstPost() {
     function emailValidation(e) {
 
             if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(e.target.value)) {
+                getEmail = e.target.value;
                 return (true)
             }
             alert("You have entered an invalid email address!")
             return (false)
         }
-        var pass1Var;
     function passOne(e){
         var pass1=e.target.value;
         pass1Var = pass1;
@@ -63,8 +64,8 @@ export default function FirstPost() {
     function submitFunction() {
 
         fullNames = nameVal;
-        emailId = document.getElementById("email").value;
-        psw = document.getElementById("psw").value;
+        emailId = getEmail;
+        psw = pass1Var;
 
 
         window.localStorage.setItem('fullNames', fullNames);
@@ -73,7 +74,7 @@ export default function FirstPost() {
 
         if (fullNames != null && emailId != null && psw != null) {
 
-            window.location.href = "Login.html";
+             window.location.href = "Login";
             return true;
         } else {
 

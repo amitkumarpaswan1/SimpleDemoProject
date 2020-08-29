@@ -10,7 +10,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
 
       </Head>
-Read <Link href="/Calculater/calculater"><a>this page!</a></Link>
+Read <Link href="/home/home"><a>this page!</a></Link>
 
       <footer className={styles.footer}>
         <a
