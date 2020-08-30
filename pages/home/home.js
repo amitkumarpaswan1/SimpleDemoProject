@@ -49,7 +49,7 @@ export default function HomePage() {
 
             var letters = /^[A-Za-z ]+$/;
             if (fullName.match(letters)) {
-                return true;
+                // return true;
             }
             else {
                 alert("Wrong name formate ");
@@ -57,14 +57,14 @@ export default function HomePage() {
             }
 
         }catch(err){
-
+         
 
         }
 
         try{
 
-            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailVal)) {
-                return (true)
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+                // return (true)
             } else {
                 alert("You have entered an invalid email address!")
                 return (false)
@@ -77,8 +77,8 @@ export default function HomePage() {
 
         try {
 
-            if (passVal == passValTwo) {
-                return (true)
+            if (password == passwordTwo) {
+                // return (true)
 
             } else {
                 alert("Password did not match ");
@@ -90,6 +90,7 @@ export default function HomePage() {
         } catch (error) {
             
         }
+
 
     }
     return (
