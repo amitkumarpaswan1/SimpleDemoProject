@@ -1,8 +1,13 @@
-import Link from 'next/link'
-import React, { Component,useState } from 'react'
+import Link from 'next/link';
+import React, { Component,useState } from 'react';
+import {BrowserRouter,Route} from 'next/router';
+import Login from './Login.js';
+import { useRouter } from 'next/router';
+import Button from "@material-ui/core/Button";
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
 export default function HomePage() {
+    const Router = useRouter();
 
     const [fullName, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -91,6 +96,20 @@ export default function HomePage() {
             
         }
 
+        window.localStorage.setItem('fullNames', fullName);
+        window.localStorage.setItem('emailIds', email);
+        window.localStorage.setItem('psw', passwordTwo);
+
+        if (fullName != null && email != null && passwordTwo != null) {
+            Router.push("/home/Login");
+            //  <Route href="/home/Login"  ></Route>
+            //  window.location.href = "Login";
+            return true;
+        } else {
+
+            return false;
+        }
+
 
     }
     return (
@@ -111,8 +130,7 @@ export default function HomePage() {
                 <input type="password" placeholder="Repeat Password" name="pswRepeat" id="pswRepeat" required onChange={passTwo}></input>
 
                 <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-
-                <button className="btn btn-success" onClick={submitFunction}>  Register</button>
+                <Button onClick={submitFunction} variant="contained" color="primary"> Register</Button>
             </div>
         </>
     )

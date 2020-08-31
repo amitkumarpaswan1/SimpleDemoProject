@@ -11,10 +11,12 @@ export async function getStaticProps() {
     return {
         props: {
             posts,
-        },
+         },
+        
     }
 }
 export default function Dashboard({posts}) {
+
     return (
        <>
             <span>Visibility : {posts.visibility}</span><br></br>
@@ -22,6 +24,9 @@ export default function Dashboard({posts}) {
             <span>Date : {posts.date}</span><br></br>
             <span>Speed : {posts.speed}</span><br></br>
             <span>Base : {posts.base}</span>
-      </>
+
+       </>
+           
+      
     )
     }
