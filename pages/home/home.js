@@ -44,7 +44,6 @@ export default function HomePage() {
 
 
     const submitFunction=()=>{
-
         setFullName(fullName);
         setEmailVal(email);
         setPasswordVal(password);
