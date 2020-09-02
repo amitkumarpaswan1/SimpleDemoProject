@@ -1,85 +1,127 @@
-import Link from 'next/link'
-import React, { Component, useState } from 'react'
+import React from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import Link from "next/link";
+import { Component, useState } from "react";
+import { BrowserRouter, Route } from "next/router";
+import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
 
+ function Login()   {
 
-export default function Login() {
+      const classes = useStyles();
 
-  var getEmail;
-  var getPassword;
+      const Router = useRouter();
+    var getEmail;
+    var getPassword;
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-  const getEmailFn = (event) => {
-    setEmail(event.target.value);
-    return (true)
-  } 
-
-  const getPass = (event) => {
-    setPassword(event.target.value);
-    return (true)
-  }
-
-  const loginFn=()=> {
-    getEmail = localStorage.getItem("emailIds");
-    getPassword = localStorage.getItem("psw");
-
-    if (getEmail == email && getPassword == password) {
-      window.location.href = "DashBoard";
+    const getEmailFn = (event) => {
+      setEmail(event.target.value);
       return true;
-    } else {
-      return false;
-    }
+    };
 
+    const getPass = (event) => {
+      setPassword(event.target.value);
+      return true;
+    };
 
-  
-  // function getEmailFn(e) {
+    const loginFn = () => {
+      getEmail = localStorage.getItem("emailIds");
+      getPassword = localStorage.getItem("psw");
 
-  //   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(e.target.value)) {
-  //     loginEmails = e.target.value;
-  //     return (true)
-  //   }
-  //   alert("You have entered an invalid email address!")
-  //   return (false)
-
-
-  // } function getPass(e) {
-
-  //   loginPsws= e.target.value;
-
-  //   return (true)
-
-
-  // }
-  // function loginFn() {
-  //   getEmail = localStorage.getItem("emailIds");
-  //   getPassword = localStorage.getItem("psw");
-
-  //   if (getEmail == loginEmails && getPassword == loginPsws) {
-  //     window.location.href = "DashBoard";
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-
-     }
+      if (getEmail == email && getPassword == password) {
+        window.location.href = "DashBoard";
+        return true;
+      } else {
+        return false;
+      }
+    };
 
     return (
-        <>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign In
+          </Typography>
+          <form className={classes.form} noValidate>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  onChange={getEmailFn}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  onChange={getPass}
+                />
+              </Grid>
+            </Grid>
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              onClick={loginFn}
+            >
+              Sign In
+            </Button>
+          </form>
+        </div>
+      </Container>
+    );
+  };
 
-          <h1>Login</h1>
-
-            <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="loginEmail" id="loginEmail" required onChange={getEmailFn}></input>
-
-              <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="loginPsw" id="loginPsw" required onChange={getPass}></input>
-
-
-
-                <button class="registerbtn" onClick={loginFn}> Login</button>
-
-        </>
-    )
-}
+export default dynamic(() => Promise.resolve(Login), {
+  ssr: false,
+});

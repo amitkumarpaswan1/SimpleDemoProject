@@ -1,48 +1,49 @@
-import Head from 'next/head'
-import Link from 'next/link'
+import Head from 'next/head';
 import { positions } from '@material-ui/system';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
 
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css';
 
-import {Msterials,Box,Grid,Button,Paper,colors} from '@material-ui/core'
-
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"></script>;
+import { Msterials, Box, Grid, Button, Paper, colors, Link} from '@material-ui/core';
+import NextLink from '../components/Links';
+import MainPage from './home/mainhomepage.js';
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    '& > *': {
+      margin: theme.spacing(1),
+    },
   },
-  paper: {
-    textAlign: 'center',
+  btnStyle: {
+    color: "#f4ff81",
+  },
+  btncolor: {
+    color: "#18ffff",
+  },
 
-  },
 }));
+
 export default function Home() {
-
-  const classes = useStyles();
-  function FormRow() {
-    return (
-      <>
-        <Grid item xs={6} style={{backgroundColor:'green'}}>
-          <Link href="/home/home" >Register here </Link>
-        </Grid>
-        <Grid item xs={6}>
-           <Link href="/home/Login" >  Login here</Link>
-        </Grid>
-
-      </>
-    );
-  }
-
+const classes = useStyles();
   return (
-    <div >
-      <title>Demo App</title>
-      <Grid container spacing={1} alignItems='flex-end' justify='flex-end' >
-        <Grid container item xs={3} spacing={1} alignItems='flex-start' justify='center'>
-          <FormRow />
-        </Grid>
-      </Grid>
+    <div>
+
+      <div className={classes.root}>
+        {/* <MainPage className={classes.mainDivStyle} /> */}
+
+        {/*        
+      <Button ><Link href="/home/Login" ><a> Login here</a> </Link></Button> 
+
+      <Button  ><Link href="/home/home" ><a>Register here</a> </Link></Button> 
+ */}
+
+        <Button  variant="contained" color="secondary"><Link href="/home/Login" ><a className={classes.btnStyle}>Login here</a> </Link></Button>
+        <Button variant="contained" color="primary"><Link href="/home/home" ><a className={classes.btnStyle}>Register here</a> </Link></Button>
+
+      </div>
+      
+      <h1 className={classes.btncolor}>Welcome to the Demo Project!</h1>
 
     </div>
+    
   )
 }
