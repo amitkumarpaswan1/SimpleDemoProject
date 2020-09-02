@@ -7,10 +7,14 @@ import styles from '../styles/Home.module.css';
 import { Msterials, Box, Grid, Button, Paper, colors, Link} from '@material-ui/core';
 import NextLink from '../components/Links';
 import MainPage from './home/mainhomepage.js';
+
+import dynamic from "next/dynamic";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
       margin: theme.spacing(1),
+      
     },
   },
   btnStyle: {
@@ -22,12 +26,24 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function Home() {
+function Home() {
 const classes = useStyles();
   return (
     <div>
-
-      <div className={classes.root}>
+      <Box display="flex" justifyContent="flex-end">
+        {" "}
+        <Button variant="contained" color="secondary">
+          <Link href="/home/Login">
+            <a className={classes.btnStyle}>Login here</a>{" "}
+          </Link>
+        </Button>
+        <Button variant="contained" color="primary">
+          <Link href="/home/home">
+            <a className={classes.btnStyle}>Register here</a>{" "}
+          </Link>
+        </Button>
+      </Box>
+      <div>
         {/* <MainPage className={classes.mainDivStyle} /> */}
 
         {/*        
@@ -35,15 +51,12 @@ const classes = useStyles();
 
       <Button  ><Link href="/home/home" ><a>Register here</a> </Link></Button> 
  */}
-
-        <Button  variant="contained" color="secondary"><Link href="/home/Login" ><a className={classes.btnStyle}>Login here</a> </Link></Button>
-        <Button variant="contained" color="primary"><Link href="/home/home" ><a className={classes.btnStyle}>Register here</a> </Link></Button>
-
       </div>
-      
-      <h1 className={classes.btncolor}>Welcome to the Demo Project!</h1>
 
+      <h1 className={classes.btncolor}>Welcome to the Demo Project!</h1>
     </div>
-    
-  )
+  );
 }
+export default dynamic(() => Promise.resolve(Home), {
+  ssr: false,
+});
