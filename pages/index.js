@@ -8,13 +8,14 @@ import { Msterials, Box, Grid, Button, Paper, colors, Link} from '@material-ui/c
 import NextLink from '../components/Links';
 import MainPage from './home/mainhomepage.js';
 
+
+
 import dynamic from "next/dynamic";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    '& > *': {
+    "& > *": {
       margin: theme.spacing(1),
-      
     },
   },
   btnStyle: {
@@ -23,13 +24,22 @@ const useStyles = makeStyles((theme) => ({
   btncolor: {
     color: "#18ffff",
   },
-
+  primary: {
+    light: "#ff7961",
+    main: "#f44336",
+    dark: "#ba000d",
+    contrastText: "#000",
+  },
 }));
+
+
+
 
 function Home() {
 const classes = useStyles();
   return (
     <div>
+
       <Box display="flex" justifyContent="flex-end">
         {" "}
         <Button variant="contained" color="secondary">
@@ -53,7 +63,9 @@ const classes = useStyles();
  */}
       </div>
 
-      <h1 className={classes.btncolor}>Welcome to the Demo Project!</h1>
+      <Box display="flex" justifyContent="center">
+        <h1 className={classes.btncolor}>Welcome to the Demo Project!</h1>
+      </Box>
     </div>
   );
 }
