@@ -59,11 +59,17 @@ function Dashboard({posts,  posts: {    visibility,    main: { temp },    weathe
        const classes = useStyles();
 
        const Router = useRouter();
+
+
+       const home = () => {
+                            Router.push("/");
+
+
+       };
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-       
         <Typography component="h1" variant="h5">
           Today's Weather
         </Typography>
@@ -78,7 +84,14 @@ function Dashboard({posts,  posts: {    visibility,    main: { temp },    weathe
               <br></br>
               <span>Base : {posts.base}</span>
             </Grid>
-            
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              onClick={home}
+            >
+             Back to Home Page
+            </Button>
           </Grid>
         </form>
       </div>

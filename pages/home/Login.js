@@ -63,7 +63,8 @@ const useStyles = makeStyles((theme) => ({
       getPassword = localStorage.getItem("psw");
 
       if (getEmail == email && getPassword == password) {
-        window.location.href = "DashBoard";
+                 Router.push("/home/DashBoard");
+
         return true;
       } else {
         return false;
